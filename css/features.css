@@ -1,0 +1,80 @@
+ body, html {
+  height: 100%;
+  margin: 0;
+  scroll-behavior: smooth;
+  background: transparent; /* or white */
+}
+
+/* Fullscreen Background Video */
+.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: -1;
+}
+
+/* Hero Section */
+.hero-section {
+  padding: 120px 20px 80px;
+  text-align: center;
+  color: #fff;
+}
+
+/* Glossy Card */
+.glossy-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 40px 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow: hidden;
+  transition: transform .3s ease, box-shadow .3s ease;
+  text-align: center;
+  color: #fff;
+}
+.glossy-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 40%, transparent 60%);
+  transform: rotate(25deg);
+  transition: 0.8s;
+}
+.glossy-card:hover::before { left: 100%; top: 100%; }
+.glossy-card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0,0,0,0.4); }
+.glossy-card img { max-width: 600px; width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); }
+
+/* Icon Box */
+.icon-box {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  background: linear-gradient(145deg, #ff1a1a, #ff4d4d);
+  color: white;
+  font-size: 2rem;
+}
+
+/* Fade Animation */
+.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 1s ease, transform 1s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
