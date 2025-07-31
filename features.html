@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Features | SARA AI</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/features.css"> <!-- External glossy style -->
+</head>
+<body>
+  <!-- Video Background -->
+  <video autoplay muted loop class="bg-video">
+    <source src="images/background.mp4" type="video/mp4">
+  </video>
+  <div class="overlay"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="sara._website_template.html">SARA AI</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="sara._website_template.html">Product Overview</a></li>
+          <li class="nav-item"><a class="nav-link" href="integration.html">Integration</a></li>
+          <li class="nav-item"><a class="nav-link active" href="features.html">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="contactus.html">ContactUS</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section fade-in">
+    <div class="container">
+      <h1 class="display-4 fw-bold">Powerful AI Features</h1>
+      <p class="lead">A new way to monitor, predict and manage your cloud infrastructure.</p>
+    </div>
+  </section>
+
+  <!-- Feature Cards -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4 fade-in">
+          <div class="glossy-card">
+            <div class="icon-box"><i class="bi bi-activity"></i></div>
+            <h5>AI Anomaly Detection</h5>
+            <p>Automatically detects unusual patterns and alerts you before issues affect customers.</p>
+          </div>
+        </div>
+        <div class="col-md-4 fade-in">
+          <div class="glossy-card">
+            <div class="icon-box"><i class="bi bi-graph-up-arrow"></i></div>
+            <h5>Predictive Scaling</h5>
+            <p>Forecasts resource needs using ML models, ensuring cost efficiency and zero downtime.</p>
+          </div>
+        </div>
+        <div class="col-md-4 fade-in">
+          <div class="glossy-card">
+            <div class="icon-box"><i class="bi bi-speedometer2"></i></div>
+            <h5>Unified Dashboard</h5>
+            <p>Get a centralized view of all AWS resources with actionable AI insights.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Alternate Section -->
+  <section class="py-5">
+    <div class="container glossy-card fade-in">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h2>End-to-End Cloud Optimization</h2>
+          <p>SARA AI integrates advanced analytics with automated optimization tools, giving you full visibility and control over your cloud ecosystem.</p>
+        </div>
+        <div class="col-md-6 text-center">
+          <img src="images/features.jpg" alt="Cloud Optimization" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-light text-center py-3" id="contact">
+    <p class="mb-0">&copy; 2025 Sarbajira Softwares. All Rights Reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

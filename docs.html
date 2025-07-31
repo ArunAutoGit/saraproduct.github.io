@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation | SARA AI</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      scroll-behavior: smooth;
+      background: transparent;
+    }
+
+    /* Fullscreen Background Video */
+    .bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: -1;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: 120px 20px 80px;
+      text-align: center;
+      color: #fff;
+    }
+
+    /* Glossy Card */
+    .glossy-card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 40px 30px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      position: relative;
+      overflow: hidden;
+      transition: transform .3s ease, box-shadow .3s ease;
+      text-align: center;
+      color: #fff;
+    }
+    .glossy-card::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 40%, transparent 60%);
+      transform: rotate(25deg);
+      transition: 0.8s;
+    }
+    .glossy-card:hover::before { left: 100%; top: 100%; }
+    .glossy-card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0,0,0,0.4); }
+
+    /* Icon Box */
+    .icon-box {
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin: 0 auto 15px;
+      background: linear-gradient(145deg, #ff1a1a, #ff4d4d);
+      color: white;
+      font-size: 2rem;
+    }
+
+    /* Fade Animation */
+    .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 1s ease, transform 1s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* Footer */
+    footer { background: rgba(0,0,0,0.8); color: white; }
+  </style>
+</head>
+<body>
+  <!-- Background Video -->
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="images/background.mp4" type="video/mp4">
+  </video>
+  <div class="overlay"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="sara._website_template.html">SARA AI</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="use-cases.html">Use Cases</a></li>
+          <li class="nav-item"><a class="nav-link active" href="docs.html">Docs</a></li>
+          <li class="nav-item"><a class="nav-link" href="contactus.html">ContactUS</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section mt-5">
+    <div class="container">
+      <h1 class="display-5 fade-in">Documentation</h1>
+      <p class="lead fade-in">Find all resources, guides, and API documentation in one place.</p>
+    </div>
+  </section>
+
+  <!-- Docs Content -->
+  <section class="container py-5">
+    <div class="row g-4">
+      <div class="col-md-4 fade-in">
+        <a href="#" class="text-decoration-none">
+          <div class="glossy-card">
+            <div class="icon-box"><i class="bi bi-server"></i></div>
+            <h5>Self Host</h5>
+            <p>Deploy and run SARA AI on your own infrastructure with ease.</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4 fade-in">
+        <a href="#" class="text-decoration-none">
+          <div class="glossy-card">
+            <div class="icon-box"><i class="bi bi-journal-text"></i></div>
+            <h5>Release Notes</h5>
+            <p>Stay up to date with the latest features, bug fixes, and improvements.</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4 fade-in">
+        <a href="#" class="text-decoration-none">
+          <div class="glossy-card">
+            <div class="icon-box"><i class="bi bi-code-slash"></i></div>
+            <h5>Documentation / API</h5>
+            <p>Access full API references, integration guides, and examples.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-light text-center py-3">
+    <p>&copy; 2025 Sarbajira Softwares. All Rights Reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

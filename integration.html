@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Integration | SARA AI</title>
+
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <style>
+    body, html {
+  height: 100%;
+  margin: 0;
+  scroll-behavior: smooth;
+  background: transparent; /* or white */
+}
+
+
+    /* Fullscreen Background Video */
+    .bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(4, 4, 4, 0.5);
+      z-index: -1;
+    }
+
+    /* Hero Section (transparent over video) */
+    .hero-section {
+      padding: 120px 20px 80px;
+      text-align: center;
+      color: white;
+    }
+
+    /* Glossy Content Card */
+    .glossy-card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 40px 30px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      position: relative;
+      overflow: hidden;
+      transition: transform .3s ease, box-shadow .3s ease;
+      text-align: center;
+      color: #fff;
+    }
+    .glossy-card::before {
+      content: "HAi";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0.4) 0%,
+        rgba(255, 255, 255, 0.1) 40%,
+        transparent 60%
+      );
+      transform: rotate(25deg);
+      transition: 0.8s;
+    }
+    .glossy-card:hover::before {
+      left: 100%;
+      top: 100%;
+    }
+    .glossy-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+    .glossy-card img {
+      max-width: 600px;
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Fade Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Video -->
+  <video class="bg-video" autoplay muted loop playsinline>
+    <source src="images/background.mp4" type="video/mp4">
+  </video>
+  <div class="overlay"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="sara._website_template.html">SARA AI</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="sara._website_template.html">Product Overview</a></li>
+          <li class="nav-item"><a class="nav-link active" href="integration.html">Integration</a></li>
+          <li class="nav-item"><a class="nav-link" href="contactus.html">contactus</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section fade-in" data-delay="0">
+    <div class="container">
+      <h1 class="display-5 fw-bold">Seamless AWS Integration</h1>
+      <p class="lead mb-0">Maximize your AWS performance with zero downtime</p>
+    </div>
+  </section>
+
+  <!-- Integration Content -->
+  <section class="py-5">
+    <div class="container">
+      <div class="glossy-card fade-in" data-delay="200">
+        <p>
+          SaraAI seamlessly integrates with AWS, providing an intuitive dashboard, intelligent scaling,
+          and actionable insights to enhance performance and reduce downtime.
+        </p>
+        <img src="images/CW.png" alt="Seamless AWS Integration" class="img-fluid my-4" />
+        <p>
+          With just a few clicks, SaraAI connects with your AWS environment and provides
+          AI-driven recommendations for optimal resource allocation and cost savings.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-light text-center py-3" id="contact">
+    <p class="mb-0">&copy; 2025 Sarbajira Softwares. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Bootstrap Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const delay = entry.target.dataset.delay || 0;
+            setTimeout(() => entry.target.classList.add('visible'), delay);
+          }
+        });
+      }, { threshold: 0.2 });
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    });
+  </script>
+</body>
+</html>
