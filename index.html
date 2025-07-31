@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Overview</title>
+
+  <!-- Bootstrap & Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    /* Navbar Brand */
+    .navbar-brand {
+      font-weight: 900;
+      font-size: 1.8rem;
+      background: linear-gradient(45deg, #1a6aff, #ff4d4d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 6px rgba(255, 0, 0, 0.4);
+    }
+
+    /* Active Nav Link */
+    .nav-link.active {
+      font-weight: bold;
+      background: linear-gradient(45deg, #130b85, #ff4d4d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 6px rgba(255, 0, 0, 0.4);
+    }
+
+    /* Hover Glow */
+    .nav-link:not(.active):hover,
+    .dropdown-menu .dropdown-item:hover {
+      color: #ff4d4d !important;
+      text-shadow: 0 0 5px rgba(255, 77, 77, 0.8),
+                   0 0 10px rgba(255, 77, 77, 0.5),
+                   0 0 20px rgba(255, 77, 77, 0.3);
+      background: transparent !important;
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* Dropdown Animation */
+    .dropdown-menu {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.25s ease-in-out;
+      display: block;
+      visibility: hidden;
+    }
+    .dropdown-menu.show {
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
+    }
+
+    /* Dropdown Arrow Rotation */
+    .dropdown-toggle::after {
+      margin-left: .3em;
+      transition: transform 0.3s ease-in-out;
+    }
+    .show > .dropdown-toggle::after {
+      transform: rotate(90deg);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(180deg, #2e12cb34 0%, #7cbcf4 50%, #6e66ff3b 100%);
+      color:linear-gradient(135deg, #cb12120a 0%, #7cbcf4 50%, #0b065a 100%);
+      box-shadow: inset 0 0 80px rgba(255, 0, 0, 0.2);
+    }
+
+
+/* Optional: button glow for consistency */
+.cta-btn {
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  color: #000;
+  border-radius: 30px;
+  padding: 10px 30px;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+.cta-btn:hover {
+  background: rgba(255, 255, 255, 0.6);
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+    /* CTA Button */
+    .cta-btn {
+      background: linear-gradient(145deg, #ff1a1a, #ff4d4d);
+      border: none;
+      color: white;
+      font-weight: 600;
+      border-radius: 30px;
+      padding: 10px 25px;
+      box-shadow: 0 4px 10px rgba(255, 0, 0, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .cta-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(255, 0, 0, 0.5);
+    }
+
+    /* Video Section */
+    .video-section { position: relative; overflow: hidden; height: 100vh; }
+    .bg-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; filter: brightness(0.85); transform: scale(1.05); }
+    .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1; }
+    .video-section .container { position: relative; z-index: 2; }
+
+    /* Cards */
+    .product-card {
+      border: none;
+      margin-bottom: 40px;
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      transition: transform .3s, box-shadow .3s;
+    }
+    .product-card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+
+    /* Tabs */
+    .nav-tabs .nav-link.active { background-color: red !important; color: white !important; border: none !important; font-weight: bold; }
+    .nav-tabs .nav-link { color: white; font-weight: 500; transition: background .3s ease, color .3s ease; display: flex; align-items: center; }
+    .nav-tabs .nav-link:hover { color: red; }
+
+    /* Tab Icon Bounce */
+    .tab-icon { transition: transform 0.4s ease; }
+    .nav-link.active .tab-icon { animation: icon-bounce 0.6s ease; }
+    @keyframes icon-bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+
+    /* Fade Animation */
+    .fade-animation .tab-pane { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; }
+    .fade-animation .tab-pane.active.show { opacity: 1; transform: translateY(0); }
+
+    /* Scroll Fade-in */
+    .fade-in, .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 1s ease, transform 1s ease; }
+    .fade-in.visible, .fade-up.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container justify-content-center">
+      <a class="navbar-brand position-absolute start-0 ms-3" href="sara._website_template.html">SARA AI</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#product" data-bs-toggle="dropdown">Product</a>
+            <ul class="dropdown-menu">
+              <li><a class="nav-link" href="sara._website_template.html">Product Overview</a>
+                <li><a class="dropdown-item" href="integration.html">Integration</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Use Cases</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="use-cases.html">Building AI Agents</a></li>
+              <li><a class="dropdown-item" href="use-cases.html">Cloud Operations</a></li>
+              <li><a class="dropdown-item" href="use-cases.html">Cloud Alarms</a></li>
+              <li><a class="dropdown-item" href="use-cases.html">Cloud Services</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Docs</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="docs.html">Self host</a></li>
+              <li><a class="dropdown-item" href="docs.html">Release notes</a></li>
+              <li><a class="dropdown-item" href="docs.html">Documentation</a></li>
+              <li><a class="dropdown-item" href="docs.html">Our licenses</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link active" href="features.html">Features</a></li>
+          <li class="nav-item"><a class="nav-link active" href="pricing.html">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link active" href="contactus.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section text-center py-5 mt-5" id="home">
+    <div class="container">
+      <img src="images/logo.png" alt="SARA AI Logo" class="img-fluid mb-3" style="max-width: 250px;">
+      <p class="lead text-white">
+        SaraAI is an advanced AI-based cloud alarm monitoring system designed for AWS applications.<br>
+        It offers seamless integration, AI-driven anomaly detection, and predictive workload optimization
+        to ensure reliable and cost-efficient cloud performance.
+      </p>
+      <a href="#product" class="btn btn-light btn-lg cta-btn mt-3">Explore Features</a>
+    </div>
+  </section>
+
+  <!-- Product Section with Video -->
+  <section class="video-section" id="product">
+    <video autoplay muted loop playsinline class="bg-video">
+      <source src="images/background.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+    <div class="overlay"></div>
+    <div class="container">
+      <ul class="nav nav-tabs justify-content-center mb-4" id="productTabs" role="tablist">
+        <li class="nav-item">
+          <button class="nav-link active" id="monitoring-tab" data-bs-toggle="tab" data-bs-target="#monitoring" type="button">
+            <i class="bi bi-cloud-arrow-up-fill me-2 tab-icon"></i> AI-Powered Monitoring
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" id="integration-tab" data-bs-toggle="tab" data-bs-target="#integration" type="button">
+            <i class="bi bi-plug-fill me-2 tab-icon"></i> Seamless AWS Integration
+          </button>
+        </li>
+      </ul>
+
+      <div class="tab-content fade-animation">
+        <div class="tab-pane fade show active" id="monitoring">
+          <div class="col-12 fade-in mb-5">
+            <div class="card product-card text-center p-3">
+              <h5 class="card-title">AI-Powered Monitoring</h5>
+              <p class="card-text">
+                SaraAI is a next-generation AI-powered cloud monitoring solution tailored for AWS environments.
+                It proactively detects issues and dynamically optimizes cloud performance while giving businesses
+                full control of their resources.
+              </p>
+              <img src="images/EC2.png" class="card-img-bottom img-fluid mt-3 fade-up" alt="AI-Powered Monitoring">
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="integration">
+          <div class="col-12 fade-in">
+            <div class="card product-card text-center p-3">
+              <h5 class="card-title">Seamless AWS Integration</h5>
+              <p class="card-text">
+                SaraAI seamlessly integrates with AWS, providing an intuitive dashboard, intelligent scaling,
+                and actionable insights to enhance performance and reduce downtime.
+              </p>
+              <img src="images/CW.png" class="card-img-bottom img-fluid mt-3 fade-up" alt="Seamless AWS Integration">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-light text-center py-3 mt-5" id="contact">
+    <p class="mb-0">&copy; 2025 Sarbajira Softwares. All Rights Reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Fade-in on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.fade-in, .fade-up').forEach(el => observer.observe(el));
+
+    // Function to activate Integration tab
+    function activateIntegrationTab() {
+      const triggerEl = document.querySelector('#integration-tab');
+      const tab = new bootstrap.Tab(triggerEl);
+      tab.show();
+      document.querySelector('#integration').scrollIntoView({ behavior: "smooth" });
+    }
+
+    // Activate Integration tab if page opened with hash
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.location.hash === "#integration-tab") {
+        activateIntegrationTab();
+      }
+    });
+
+   
+  </script>
+</body>
+</html>
